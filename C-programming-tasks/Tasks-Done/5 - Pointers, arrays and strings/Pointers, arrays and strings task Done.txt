@@ -1,0 +1,285 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <time.h>
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and error is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+* Task 0.
+* 98 Battery st. mandatory
+* Write a function that takes a pointer to an int as parameter
+* and updates the value it points to to 98.
+*/
+int update(int *n)
+{
+    *n = 98;
+    return(&n);
+}
+/**
+* Task 1.
+* Don't swap horses in crossing a stream mandatory
+* Write a function that swaps the values of two integers.
+*/
+int swap(int *n, int *m)
+{
+    int tmp = 0;
+    tmp = *n;
+    *n = *m;
+    *m = tmp;
+    return(&n, &m);
+}
+/**
+* Task 2.
+* This report, by its very length, defends itself against
+* the risk of being read mandatory
+* Write a function that returns the length of a string.
+*/
+int str_len(char *str)
+{
+    int len;
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        len = len + 1;
+    }
+    return(len);
+}
+/**
+* Task 3.
+* I do not fear computers. I fear the lack of them mandatory
+* Write a function that prints a string, followed by a new
+* line, to stdout.
+*/
+int print_str(char *str)
+{
+    return(str);
+}
+/**
+* Task 4.
+* I can only go one way. I've not got a reverse gear mandatory
+* Write a function that prints a string, in reverse, followed
+* by a new line.
+*/
+void print_rev_str(char *str)
+{
+    int i, n = 0;
+    while (str[n] != '\0')
+    {
+        n++;
+    }
+    for (i = n - 1; i >= 0; i--)
+    {
+        _putchar(str[i]);
+    }
+    _putchar('\n');
+}
+/**
+* Task 5.
+* A good engineer thinks in reverse and asks himself about
+* the stylistic consequences of the components and systems
+* he proposes mandatory
+* Write a function that reverses a string.
+*/
+void str_rev(char *str)
+{
+    int a = 0, b, c;
+    char d;
+    while (str[a] != '\0')
+    {
+        a++;
+    }
+    c = a - 1;
+    for (b = 0; c >= 0 && b < c; c--, b++)
+    {
+        d = str[b];
+        str[b] = str[c];
+        str[c] = d;
+    }
+}
+/**
+* Task 6.
+* Half the lies they tell about me aren't true mandatory
+* Write a function that prints every other character of a string,
+* starting with the first character, followed by a new line.
+*/
+void print_char(char *str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        _putchar(str[i]);
+        _putchar('\n');
+        i++;
+    }
+}
+/**
+* Task 7.
+* Winning is only half of it. Having fun is the other half
+* mandatory
+* Write a function that prints half of a string, followed by a
+* new line.
+*/
+void print_half(char *str)
+{
+    int i = 0, n;
+
+    while (str[i] != '\0')
+    {
+        i++;
+    }
+    if (i + 1 % 2 != '0')
+    {
+        n = (i - 1) / 2;
+    }
+    else
+    {
+        n = (i / 2);
+    }
+    n++;
+    for (i = n; str[i] != '\0'; i++)
+    _putchar(str[i]);
+    _putchar('\n');
+}
+/**
+* Task 8.
+* Arrays are not pointers mandatory
+* Write a function that prints n elements of an array of
+* integers, followed by a new line.
+*/
+void print_array(int *arr, int n)
+{
+    int i = 0;
+    while (i <= (n -1))
+    {
+        printf("%d", arr[i]);
+        if (i != (n- 1))
+        {
+            printf(", ");
+        }
+        i++;
+    }
+    _putchar('\n');
+}
+/**
+* Task 9.
+* strcpy mandatory Prototype: char *_strcpy(char *dest, char *src);
+* Write a function that copies the string pointed to by src,
+* including the terminating null byte (\0), to the buffer pointed
+* to by dest.
+*/
+char *_strcpy(char *dest, char *src)
+{
+    int i = 0;
+    while (src[i] != '\0')
+    {
+        src[i] = dest[i];
+        i++;
+    }
+    printf("%s", dest);
+    _putchar('\n');
+}
+/**
+* Task 10.
+* Great leaders are willing to sacrifice the numbers to save
+* the people. Poor leaders sacrifice the people to save the numbers
+* #advanced
+* Write a function that convert a string to an integer.
+*/
+int _str2int(char *sr)
+{
+    int i = 0, n = 1;
+    while (sr[i] != '\0')
+    {
+        sr[i] = n;
+        printf("%d, ", sr[i]);
+        i++;
+        n = (n + 1);
+    }
+    _putchar('\n');
+}
+/**
+* Task 11.
+* Don't hate the hacker, hate the code #advanced
+* Create a program that generates random valid passwords for the
+* program 101-crackme.
+*/
+int rand_password()
+{
+    int n;
+    srand(time(0));
+    n = rand() - RAND_MAX / 2;
+    printf("%d", n);
+    _putchar('\n');
+    return(n);
+}
+
+int main(int argc, char *argv[])
+{
+    char s[] = "Dragon fire burns burns sand to glass";
+    char *d = malloc(sizeof(char));
+    int arr[] = {20, 1, 23, 43, 777, 836, 34, 745, 5, 33};
+    char str[] = "The great war between the gods and the titans";
+    char st[] = "Zeus, poseidon and hades took down the great kronos";
+    int n = 20, p = 30, a = 9;
+    int *m = 87;
+
+    printf("Task 0 answer:\n");
+    update(&m);
+    printf("%d\n", m);
+
+    _putchar('\n');
+    printf("Task 1 answer:\n");
+    swap(&n, &p);
+    printf("n = %d and p = %d\n", n, p);
+
+    _putchar('\n');
+    printf("Task 2 answer:\n");
+    printf("The string length : %d\n", str_len(str));
+
+    _putchar('\n');
+    printf("Task 3 answer:\n");
+    printf("%s\n", print_str(str));
+
+    _putchar('\n');
+    printf("Task 4 answer:\n");
+    print_rev_str(str);
+
+    _putchar('\n');
+    printf("Task 5 answer:\n");
+    str_rev(str);
+    printf("%s\n", str);
+
+    _putchar('\n');
+    printf("Task 6 answer:\n");
+    print_char(st);
+
+    _putchar('\n');
+    printf("Task 7 answer:\n");
+    print_half(st);
+
+    _putchar('\n');
+    printf("Task 8 answer:\n");
+    print_array(&arr, a);
+
+    _putchar('\n');
+    printf("Task 9 answer:\n");
+    _strcpy(s, d);
+
+    _putchar('\n');
+    printf("Task 10 answer:\n");
+    _str2int(s);
+
+    _putchar('\n');
+    printf("Task 11 answer:\n");
+    rand_password();
+}

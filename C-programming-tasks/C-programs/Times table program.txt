@@ -1,0 +1,45 @@
+#include <stddef.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <crtdbg.h>
+
+
+int main(void)
+{
+    char firstName[20], Surname[20], reply[3];
+    char yes;
+
+    printf("                                             Hello User,\n");
+    printf("                                             Please input your names:\n\n");
+    scanf("%s%s", firstName, Surname);
+    printf("\n                                             Welcome %s %s.\n\n", firstName, Surname);
+
+    int m, n;
+    int count = 0;
+    while (count <= 10000000)
+    {
+        printf("                                             Please enter the number who's multiplication table you wish to see:\n");
+        printf("                                             Type zero(0) to quit:\n");
+        scanf("%d", &n);
+        printf("                                             Now enter the extent the multiplication should go:\n");
+        printf("                                             Type zero(0) to quit:\n");
+        scanf("%d", &m);
+        {
+            int c = 0;
+            for (int b = 0; b <= m; c+=n)
+            {
+                printf("%d x %d = %d\n", n, b, c);
+                b++;
+            }
+            count++;
+            if ((n == 0) && (m == 0))
+            {
+                printf("\nProcess terminated!\n\n");
+                break;
+            }
+        }
+    }
+    return (0);
+}

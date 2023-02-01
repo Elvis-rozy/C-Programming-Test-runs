@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct list
+{
+    int data;
+    struct list *next;
+} list;
+
+typedef struct Node
+{
+    int data;
+    struct Node *next;
+} Node;
+
+int main(int argc, char *argv[])
+{
+    list *first, *second, *third, *fourth;
+
+    first = (struct list *)malloc(sizeof(struct list));
+    second = (struct list *)malloc(sizeof(struct list));
+    third = (struct list *)malloc(sizeof(struct list));
+    fourth = (struct list *)malloc(sizeof(struct list));
+
+    first->data = 200, second->data = 400;
+    third->data = 600, fourth->data = 800;
+
+    first->next = &second, second->next = &third;
+    third->next = &fourth, fourth->next = NULL;
+
+    printf("The pointer set of linked lists data:\nFirst = %d\nSecond = %d\nThird = %d\nFourth = %d\n", first->data, second->data, (*third).data, fourth->data);
+
+    printf("______________________________________\n\n");
+    Node firstA;
+
+    firstA.next = malloc(sizeof(struct Node));
+    firstA.next->next = malloc(sizeof(struct Node));
+    firstA.next->next->next = malloc(sizeof(struct Node));
+    firstA.next->next->next->next = NULL;
+    firstA.data = 200;
+    firstA.next->data = 400;
+    firstA.next->next->data = 600;
+    firstA.next->next->next->data = 800;
+
+    printf("The Regular set of linked lists data:\nFirst = %d\nSecond = %d\nThird = %d\nFourth = %d\n", firstA.data, firstA.next->data, firstA.next->next->data, firstA.next->next->next->data);
+    return (0);
+}
+
+
+
+
+
+Example C
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct list
+{
+    int x;
+    struct list *next;
+} list_t;
+
+int main(int argc, char *argv[])
+{
+    list_t *head, *node1, *node2, *node3, *node4;
+
+    node1 = malloc(sizeof(list_t));
+    node1->x = 1, node1->next = NULL;
+    //head = node1;
+
+    node2 = malloc(sizeof(list_t));
+    node2->x = 2, node2->next = NULL;
+    node1->next = node2;
+
+    node3 = malloc(sizeof(list_t));
+    node3->x = 3, node3->next = NULL;
+    node2->next = node3;
+
+    node4 = malloc(sizeof(list_t));
+    node4->x = 4, node4->next = NULL;
+    node3->next = node4;
+
+    head = node1;
+    list_t *traverser = head;
+    while (head != NULL)
+    {
+        printf("%d -%p\n", head->x, head);
+        head = head->next;
+    }
+    while(traverser != NULL)
+    {
+        list_t *tmp = traverser;
+        traverser = traverser->next;
+        free(tmp);
+    }
+    return (0);
+}
+

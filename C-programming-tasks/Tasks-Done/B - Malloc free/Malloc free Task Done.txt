@@ -1,0 +1,226 @@
+#include <stdio.h>
+#include <stdlib.h>
+/**
+* Task 0. Float like a butterfly, sting like a bee.
+* Write a function that creates an array of chars,
+* and initializes it with a specific char.
+* Prototype: char *create_array(unsigned int size, char c);
+* Returns NULL if size = 0 Returns a pointer to the array,
+* or NULL if it fails
+*/
+char *create_array(unsigned int size, char c)
+{
+    char *array;
+    array = (char *)malloc(sizeof(char)* size);
+    char *p;
+    p = &array;
+    int i = 0;
+    if (size == 0)
+    {
+        return(NULL);
+    }
+
+    if (array != NULL)
+    {
+       for (i = 0; i < size; i++)
+        {
+            array[i] = c;
+            printf("%c", array[i]);
+        }
+        return (p);
+    }
+    free(array);
+    return(NULL);
+}
+/**
+* Task 1.
+* The woman who has no imagination has no wings mandatory
+Write a function that returns a pointer to a newly allocated
+* space in memory, which contains a copy of the string given
+* as a parameter.
+* Prototype: char *_strdup(char *str);
+* The _strdup() function returns a pointer to a new string
+* which is a duplicate of the string str.
+* Memory for the new string is obtained with malloc, and can
+* be freed with free.
+* Returns NULL if str = NULL On success, the _strdup function
+* returns a pointer to the duplicated string.
+* It returns NULL if insufficient memory was available
+*/
+char *_strdup(char *str)
+{
+    char *st = malloc(sizeof(char *));
+    char *ptr = &st;
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        st[i] = str[i];
+        printf("%c", st[i]);
+        i++;
+    }
+    if (str == '\0')
+    {
+        return(NULL);
+    }
+    free(st);
+    return(NULL);
+}
+/**
+* Task 2.
+* He who is not courageous enough to take risks will
+* accomplish nothing in life mandatory
+* Write a function that concatenates two strings.
+* Prototype: char *str_concat(char *s1, char *s2);
+* The returned pointer should point to a newly allocated
+* space in memory which contains the contents of s1, followed
+* by the contents of s2, and null terminated if NULL is passed,
+* treat it as an empty string. The function should return NULL
+* on failure.
+*/
+char *str_concat(char *s1, char *s2)
+{
+    char *mem = malloc(sizeof(char *));
+    char *pt;
+    pt = &mem;
+
+    int i = 0, n = 0;
+    while (s1[i] != '\0')
+    {
+        mem[i] = s1[i];
+        printf("%c", mem[i]);
+        i++;
+    }
+    while (s2[n] != '\0')
+    {
+        mem[i] = s2[n];
+        printf("%c", mem[i]);
+        i++;
+        n++;
+    }
+    free(mem);
+    mem[i] = '\0';
+    return(pt);
+}
+/**
+* Task 3.
+* If you even dream of beating me you'd better wake up and
+* apologize mandatory
+* Write a function that returns a pointer to a 2 dimensional
+* array of integers.
+* Prototype: int **alloc_grid(int width, int height);
+* Each element of the grid should be initialized to 0
+* The function should return NULL on failure If width or
+* height is 0 or negative, return NULL.
+*/
+int **alloc_grid(int width, int height)
+{
+    int **array, i, j;
+    int len = width * height;
+
+    if (len <= 0)
+    {
+        return(NULL);
+    }
+    array = (int **)malloc(sizeof(int *) * height);
+    if (array == NULL)
+    {
+        return(NULL);
+    }
+    for (i = 0; i < height; i++)
+    {
+        array[i] = (int *)malloc(sizeof(int *) * width);
+        if (array[i] == NULL)
+        {
+            for (i--; i >= 0; i--)
+            {
+                free(array[i]);
+                free(array);
+                return(NULL);
+            }
+        }
+        for (i = 0; i < height; i++)
+        {
+            for (j = 0; j < width; j++)
+            {
+                array[i][j] = 0;
+            }
+        }
+        printf("%d", array[i]);
+    }
+    return(array);
+}
+/**
+* Task 6.
+* I will show you how great I am #advanced
+* Write a function that splits a string into words.
+* Prototype: char **strtow(char *str); The function returns a
+* pointer to an array of strings (words)
+* Each element of this array should contain a single word,
+* null-terminated The last element of the returned array
+* should be NULL Words are separated by spaces
+* Returns NULL if str == NULL or str == "" If your function
+* fails, it should return NULL
+*/
+char **strtow(char *str)
+{
+    char *array = (char *)malloc(sizeof(char *));
+
+    int i = 0, j = 0;
+    if ((str ==  NULL) || (str ==  ""))
+    {
+        return(NULL);
+    }
+    while (str[i] != '\0')
+    {
+        if (str[i] == ' ')
+        {
+            str[i] = '\0';
+            (str[i]) + 1; = str[j];
+
+            i++;
+            j++;
+        }
+        i++;
+    }
+    array = str;
+    printf("%s", array);
+    free(array);
+    return(array);
+}
+int main(int argc, char *argv[])
+{
+    int arr[6][5];
+    char str[] = "Vikings from the west";
+    char n = 'f';
+    char j[] = "The great wall of";
+    char k[] = " china";
+    char string1[] = "shit!...The crocodile just ate the bird.";
+
+    printf("Task 0 answer:\n");
+    create_array(8, n);
+    printf("\n");
+
+    printf("\nTask 1 answer:\n");
+    _strdup(string1);
+    printf("\n");
+
+    printf("\nTask 2 answer:\n");
+    str_concat(j, k);
+    printf("\n");
+
+    printf("\nTask 3 answer:\n");
+    alloc_grid(arr[5], arr[6]);
+    printf("\n");
+
+    printf("\nTask 4 answer:\n");
+
+    printf("\n");
+
+    printf("\nTask 5 answer:\n");
+
+    printf("\n");
+
+    printf("\nTask 6 answer:\n");
+    **strtow(str);
+    printf("\n");
+}

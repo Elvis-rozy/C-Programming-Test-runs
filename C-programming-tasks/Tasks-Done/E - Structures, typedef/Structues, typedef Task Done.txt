@@ -1,0 +1,143 @@
+#include <stdio.h>
+#include <stdlib.h>
+/**
+* Task 0.
+* Define a new type struct dog with the following elements:
+* name, type = char * age, type = float owner, type = char *
+*/
+struct dog
+{
+    char *name;
+    float age;
+    char *owner;
+};
+/**
+* Task 1.
+* A dog is the only thing on earth that loves you more than
+* you love yourself mandatory Write a function that initialize
+* a variable of type struct dog
+* Prototype: void init_dog(struct dog *d, char *name,
+* float age, char *owner);
+*/
+void init_dog(struct dog *d, char *name, float age, char *owner)
+{
+    d = malloc(sizeof(struct dog));
+    name = "Frank";
+    age = 4;
+    owner = "Charles";
+
+    d->name = name;
+    d->age = age;
+    d->owner = owner;
+    printf("struct dog initialized\n\n");
+
+    print_dog(d);
+    return(d);
+}
+/**
+* Task 2.
+* Write a function that prints a struct dog
+* Prototype: void print_dog(struct dog *d);
+* Format: see example below, You are allowed to use the
+* standard library If an element of d is NULL, print (nil)
+* instead of this element. (if name is NULL, print Name:
+* (nil)) If d is NULL print nothing.
+*/
+void print_dog(struct dog *d)
+{
+    printf("Task 2 answer\n");
+    printf("Dog's name = %s\nDog's age = %.1f\nThe owner is %s\n", d->name, d->age, d->owner);
+    if (d->name == NULL)
+    {
+        printf("nil");
+    }
+    new_type(*d);
+}
+/**
+* Task 3.
+* Define a new type dog_t as a new name for the type
+* struct dog.
+*/
+void new_type(struct dog *d)
+{
+    typedef struct dog dog_t;
+    dog_t new_dog;
+
+    new_dog.name = "Gilly";
+    new_dog.age = 15;
+    new_dog.owner = "Alexander";
+
+    printf("\nTask 3 answer\n");
+    printf("Dog's new name = %s\nDog's age = %.1f\nThe new owner is %s\n", new_dog.name, new_dog.age, new_dog.owner);
+}
+
+/**
+* Task 4.
+* Write a function that creates a new dog.
+*/
+typedef struct bog
+{
+    char *name;
+    float age;
+    char *owner;
+} dog_t;
+
+/**
+* Task 5.
+* Prototype: dog_t *new_dog(char *name, float age, char *owner);
+* You have to store a copy of name and owner Return NULL if
+* the function fails.
+*/
+
+dog_t *new_dog(char *name, float age, char *owner)
+{
+    dog_t dog2;
+
+    name = "Bobby";
+    age = 7;
+    owner = "Milton";
+
+    dog2.name = name;
+    dog2.age = age;
+    dog2.owner = owner;
+
+    printf("\nTask 4 answer\n");
+    printf("Dog's copy name = %s\nDog's age = %.1f\nThe copy owner is %s\n", dog2.name, dog2.age, dog2.owner);
+    return(0);
+}
+
+/**
+* Task 6.
+* Write a function that frees dogs.
+* Prototype: void free_dog(dog_t *d);
+*/
+void free_dog(dog_t *d)
+{
+    free(d);
+    free(new_dog);
+}
+
+
+
+
+int main(int argc, char *argv[])
+{
+    struct dog dog1;
+    dog1.name;
+    dog1.age;
+    dog1.owner;
+
+    dog_t dog2;
+    dog2.name;
+    dog2.age;
+    dog2.owner;
+
+    printf("Task 0 answer\n");
+    printf("struct dog defined\n\n");
+
+    printf("Task 1 answer\n");
+    init_dog(&dog1, dog1.name, dog1.age, dog1.owner);
+
+    new_dog(dog2.name, dog2.age, dog2.owner);
+    free_dog(&dog2);
+}

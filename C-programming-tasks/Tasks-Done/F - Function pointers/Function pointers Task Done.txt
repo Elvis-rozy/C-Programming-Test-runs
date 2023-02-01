@@ -1,0 +1,43 @@
+/**
+* Task 0.
+* What's my name mandatory
+* Write a function that prints a name.
+* Prototype: void print_name(char *name, void (*f)(char *));
+*/
+void print_name(char *name, void (*f)(char *))
+{
+    printf("Task 0 answer:\n");
+    printf("%s\n\n", name);
+}
+/**
+* Task 1.
+* If you spend too much time thinking about a thing,
+* you'll never get it done mandatory
+* Write a function that executes a function given as a
+* parameter on each element of an array.
+* Prototype: void array_iterator(int *array, size_t size, void (*action)(int));
+* where size is the size of the array and action is a pointer
+* to the function you need to use.
+*/
+void array_iterator(int *array, size_t size, void (*action)(int))
+{
+    for (int i = 0; i < size; i++)
+    {
+
+    }
+}
+
+int main(void)
+{
+    int s;
+    int n;
+    char name[] = "Pauline";
+    void (*f)(char *) = &print_name;
+    f(name);
+
+    void (*action)(int) = &array_iterator;
+    action(n);
+
+
+
+}

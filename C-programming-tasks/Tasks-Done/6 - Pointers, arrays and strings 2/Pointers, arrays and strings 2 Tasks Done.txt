@@ -1,0 +1,243 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <unistd.h>
+/** Putchar function
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and error is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+* Task 0.
+* strcat mandatory
+* Write a function that concatenates two strings.
+* Prototype: char *_strcat(char *dest, char *src);
+* This function appends the src string to the dest string,
+* overwriting the terminating null byte (\0) at the end of
+* dest, and then adds a terminating null byte
+* Returns a pointer to the resulting string dest
+*/
+char *_strcat(char *dest, char *src)
+{
+    int i = 0, n = 0;
+    while (dest[i] != '\0')
+    {
+        i++;
+    }
+    while (src[n] != '\0')
+    {
+        dest[i] = src[n];
+        i++;
+        n++;
+    }
+    dest[i] = '\0';
+    return(dest);
+}
+/**
+* Task 1.
+* strncat mandatory
+* Write a function that concatenates two strings.
+* Prototype: char *_strncat(char *dest, char *src, int n);
+* The _strncat function is similar to the _strcat function,
+* except that it will use at most n bytes from src; and src
+* does not need to be null-terminated if it contains n or
+* more bytes.
+* Return a pointer to the resulting string dest
+*/
+char *_strncat(char *dest, char *src, int n)
+{
+    int f = 0, j = 0;
+    while (dest[f] != '\0')
+    {
+        f++;
+    }
+    while (j <= (n - 1))
+    {
+        dest[f] = src[j];
+        f++;
+        j++;
+    }
+    return(dest);
+}
+/**
+* Task 2.
+* strncpy mandatory
+* Write a function that copies a string.
+* Prototype: char *_strncpy(char *dest, char *src, int n);
+* Your function should work exactly like strncpy
+*/
+char *_strncpy(char *dest, char *src, int n)
+{
+    int i = 0;
+    while (i <= (n - 1))
+    {
+        dest[i] = src[i];
+        printf("%c", dest[i]);
+        i++;
+    }
+    return(dest);
+}
+/**
+* Task 3. strcmp
+* mandatory
+* Write a function that compares two strings.
+* Prototype: int _strcmp(char *s1, char *s2);
+*/
+int _strcmp(char *s1, char *s2)
+{
+    int i = 0, n = 0;
+    while (s1[i] != '\0')
+    {
+        printf("%c", s1[i]);
+        i++;
+    }
+    while (s2[n] != '\0')
+    {
+        printf("%c", s2[n]);
+        n++;
+    }
+    while ((s1[i] == '\0') || (s2[n] == '\0'))
+    {
+        if (i == n)
+        {
+            printf("\nThey are both Equal\n");
+            return(0);
+        }
+        else if (i < n)
+        {
+            printf("\nString1 is less than string2\n");
+            return(-1);
+        }
+        else
+        {
+            printf("\nString1 is greater than string2\n");
+            return(1);
+        }
+    }
+}
+/**
+* Task 5. Always look up mandatory
+* Write a function that changes all lowercase letters of a
+* string to uppercase.
+* Prototype: char *string_toupper(char *);
+*/
+char *string_toupper(char *str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] >= 'a' && str[i] <= 'z')
+        {
+            str[i]-=32;
+        }
+        _putchar(str[i]);
+        i++;
+    }
+}
+/**
+* Task 6.
+* Expect the best. Prepare for the worst. Capitalize on what
+* comes. mandatory
+* Write a function that capitalizes all words of a string.
+* Prototype: char *cap_string(char *);
+* Separators of words: space, tabulation, new line, ,, ;, .,
+* !, ?, ", (, ), {, and }.
+*/
+char *cap_string(char *str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] >= 'a' && str[i] <= 'z')
+        {
+            str[i]-=32;
+        }
+        if (str[i] == ' ')
+        {
+            _putchar(',');
+            _putchar(' ');
+        }
+        _putchar(str[i]);
+        i++;
+    }
+}
+/**
+* Task 7.
+* Mozart composed his music not for the elite, but for
+* everybody. mandatory
+* Write a function that encodes a string into 1337.
+* Letters a and A should be replaced by 4
+* Letters e and E should be replaced by 3
+* Letters o and O should be replaced by 0
+* Letters t and T should be replaced by 7
+* Letters l and L should be replaced by 1
+* Prototype: char *leet(char *);
+* You can only use one if in your code
+* You can only use two loops in your code
+* You are not allowed to use switch
+* You are not allowed to use any ternary operation
+*/
+char *leet(char *str)
+{
+    int i = 0, j = 0;
+    char a[] = "aAeEoOtTlL";
+    char b[] = "4433007711";
+
+    for (i = 0; i <= 9; i++)
+    {
+        for (j = 0; j <= 9; j++)
+        {
+            if (str[i] = a[j])
+            {
+                str[i] = b[j];
+            }
+        }
+    }
+    printf("%s\n", str);
+}
+
+
+/** Main function */
+int main(int argc, char *argv[])
+{
+    char weird_string[] = "aAeEoOtTlL";
+    char string[] = "The power of the god of thunder!!!";
+    char db1[] = "The beginning of ";
+    char db2[] = "the End!";
+    char strA[] = "Ragnar ";
+    char strB[] = "Lothbrok";
+
+    printf("Task 0 answer:\n");
+    _strcat(strA, strB);
+    printf("%s\n", strA);
+
+    printf("\nTask 1 answer:\n");
+    printf("%s\n", _strncat(db1, db2, 5));
+
+    printf("\nTask 2 answer:\n");
+    _strncpy(strA, strB, 8);
+
+    _putchar('\n');
+    printf("\nTask 3 answer:\n");
+    _strcmp(db1, db2);
+
+    printf("\nTask 5 answer:\n");
+    string_toupper(string);
+
+    _putchar('\n');
+    printf("\nTask 6 answer:\n");
+    cap_string(string);
+
+    _putchar('\n');
+    printf("\nTask 7 answer:\n");
+    //leet(weird_string);
+
+}

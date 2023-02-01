@@ -1,0 +1,28 @@
+#include <stdlib.h>
+#include <time.h>
+
+int main(void)
+{
+    int n;
+    srand(time(0));
+    n = rand() - RAND_MAX / 2;
+    int guess;
+    while(1)
+    {
+        printf("Enter a number:\n");
+        scanf("%d", &guess);
+        if (guess > n)
+        {
+            printf("Wrong! Enter a smaller number:\n");
+        }
+        else if (guess < n)
+        {
+            printf("Wrong! Enter a larger number:\n");
+        }
+        else
+        {
+            printf("Congratulations! Correct guess, YOU WON!!!\n");
+        }
+    }
+    return (0);
+}

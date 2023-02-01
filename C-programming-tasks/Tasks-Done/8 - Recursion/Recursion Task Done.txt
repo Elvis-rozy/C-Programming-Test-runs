@@ -1,0 +1,212 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <time.h>
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and error is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+
+
+/**
+* Task 0.
+* She locked away a secret, deep inside herself, something she
+* once knew to be true... but chose to forget mandatory
+* Write a function that prints a string, followed by a new line.
+* Prototype: void _puts_recursion(char *s);
+*/
+void _puts_recursion(char *s)
+{
+    if (*s)
+    {
+        _putchar(*s);
+        _puts_recursion(s + 1);
+    }
+    else
+    {
+        _putchar('\n');
+    }
+}
+/**
+* Task 1.
+* Why is it so important to dream? Because, in my dreams we
+* are together mandatory
+* Write a function that prints a string in reverse.
+* Prototype: void _print_rev_recursion(char *s);
+*/
+void _print_rev_recursion(char *s)
+{
+    if (*s)
+    {
+      _print_rev_recursion(s + 1);
+      _putchar(*s);
+    }
+}
+/**
+* Task 2.
+* Dreams feel real while we're in them. It's only when we
+* wake up that we realize something was actually strange.
+* Write a function that returns the length of a string.
+* Prototype: int _strlen_recursion(char *s);
+*/
+int i = 0;
+int _strlen_recursion(char *s)
+{
+
+    if (*s)
+    {
+        i = i + 1;
+        _strlen_recursion(s + 1);
+    }
+    else
+    {
+        printf("%d", i);
+    }
+}
+/**
+* Task 3.
+* You mustn't be afraid to dream a little bigger, darling
+* Write a function that returns the factorial of a given
+* number. Prototype: int factorial(int n);
+* If n is lower than 0, the function should return -1 to
+* indicate an error Factorial of 0 is 1
+*/
+int factorial(int n)
+{
+    if (n < 0)
+    {
+        return(-1);
+    }
+    else if (n == 0)
+    {
+        return(1);
+    }
+    return(n * factorial(n - 1));;
+}
+/**
+* Task 4.
+* Once an idea has taken hold of the brain it's almost
+* impossible to eradicate mandatory
+* Write a function that returns the value of x raised to
+* the power of y.
+* Prototype: int _pow_recursion(int x, int y);
+* If y is lower than 0, the function should return -1
+*/
+int _pow_recursion(int x, int y)
+{
+    int n = 0;
+    if (y == 0)
+    {
+        return(1);
+    }
+    if (y != 0)
+    {
+        return (x * _pow_recursion(x, y-1));
+    }
+    return(-1);
+}
+/**
+* Task 5.
+* Your subconscious is looking for the dreamer mandatory
+* Write a function that returns the natural square root
+* of a number. Prototype: int _sqrt_recursion(int n);
+* If n does not have a natural square root, the function
+* should return -1
+*/
+int check(int i, int j)
+{
+    if ((i * i) == j)
+    {
+        return(i);
+    }
+    if ((i * i) > j)
+    {
+        return(-1);
+    }
+    check(i + 1, j);
+}
+int _sqrt_recursion(int n)
+{
+    if (n == 0)
+    {
+        return(0);
+    }
+    check(1, n);
+}
+
+/**
+* Task 6.
+* Inception. Is it possible? mandatory
+* Write a function that returns 1 if the input integer is
+* a prime number, otherwise return 0.
+* Prototype: int is_prime_number(int n);
+*/
+int check2(int e, int l)
+{
+    if (l < 2 || l % e == 0)
+    {
+        printf("%d is not a prime number\n", l);
+        return(0);
+    }
+    else if (e > l / 2)
+    {
+        printf("%d is a prime number\n", l);
+        return(1);
+    }
+    else
+    {
+        return(check (e + 1, l));
+    }
+}
+
+int is_prime_number(int n)
+{
+    if (n == 2)
+    {
+        printf("%d is a prime number\n", n);
+        return(1);
+    }
+    return(check2(2, n));
+}
+
+int main(int ac, char *av[])
+{
+    char string[] =  "The age of Dragons have come";
+
+    printf("Task 0 answer:\n");
+    _puts_recursion(string);
+
+    printf("\nTask 1 answer:\n");
+    _print_rev_recursion(string);
+    _putchar('\n');
+
+    printf("\nTask 2 answer:\n");
+    _strlen_recursion(string);
+    _putchar('\n');
+
+    printf("\nTask 3 answer:\n");
+    printf("%d", factorial(5));
+    _putchar('\n');
+
+    printf("\nTask 4 answer:\n");
+    printf("%d", _pow_recursion(5, 3));
+    _putchar('\n');
+
+    printf("\nTask 5 answer:\n");
+    printf("%d", _sqrt_recursion(25));
+    _putchar('\n');
+
+    printf("\nTask 6 answer:\n");
+    printf("%d", is_prime_number(9));
+    _putchar('\n');
+
+}

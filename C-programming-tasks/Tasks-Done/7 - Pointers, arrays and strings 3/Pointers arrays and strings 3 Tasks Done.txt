@@ -1,0 +1,248 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+/**
+* 0. memset mandatory
+* Write a function that fills memory with a constant byte.
+* Prototype: char *_memset(char *s, char b, unsigned int n);
+* The _memset() function fills the first n bytes of the memory
+* area pointed to by s with the constant byte b Returns a
+* pointer to the memory area s
+*/
+char *_memset(char *s, char b, unsigned int n)
+{
+    int i = 0;
+    while (i <= n)
+    {
+        s[i] = b;
+        printf("b inputed no. %d\n", i);
+        i++;
+    }
+    return(s);
+}
+/**
+* Task 1. memcpy mandatory
+* Write a function that copies memory area.
+* Prototype: char *_memcpy(char *dest, char *src, unsigned int n);
+* The _memcpy() function copies n bytes from memory area src to
+* memory area dest Returns a pointer to dest
+*/
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+    int i = 0;
+    while(i <= n)
+    {
+        dest[i] = src[i];
+        printf("Bytes copied no. %d\n", i);
+        i++;
+    }
+    return(dest);
+}
+/**
+* Task 2.
+* strchr mandatory
+* Write a function that locates a character in a string.
+* Prototype: char *_strchr(char *s, char c);
+* Returns a pointer to the first occurrence of the character c
+* in the string s, or NULL if the character is not found
+*/
+char *_strchr(char *s, char c)
+{
+    int i = 0;
+
+    while (s[i] != '\0')
+    {
+        printf("%c", s[i]);
+        if (s[i] % c == 0)
+        {
+            s[i] = c;
+            printf("\ncharacter:'%c'spotted!\n", c);
+            return(s);
+        }
+        i++;
+    }
+    printf("\n");
+    return(NULL);
+}
+/**
+* Task 3.
+* strspn mandatory
+* Write a function that gets the length of a prefix substring.
+* Prototype: unsigned int _strspn(char *s, char *accept);
+* Returns the number of bytes in the initial segment of s which
+* consist only of bytes from accept
+*/
+unsigned int _strspn(char *s, char *accept)
+{
+    int i = 0, len = 0, x, y = 0;
+    for (x = 0; s[x] != '\0'; x++)
+    {
+        if (s[x] != 32)
+        {
+            for (y = 0; accept[y] != '\0'; y++)
+            {
+                if (s[x] == accept[y])
+                {
+                    len++;
+                }
+            }
+        }
+        else
+        {
+            printf("%d\n", len);
+            return(len);
+        }
+    }
+    printf("%d\n", len);
+    return(len);
+}
+/**
+* Task 4. strpbrk mandatory
+* Write a function that searches a string for any of a set of bytes.
+* Prototype: char *_strpbrk(char *s, char *accept);
+* The _strpbrk() function locates the first occurrence in the
+* string s of any of the bytes in the string accept
+* Returns a pointer to the byte in s that matches one of the
+* bytes in accept, or NULL if no such byte is found
+*/
+char *_strpbrk(char *s, char *accept)
+{
+    while (*s)
+    {
+        for (int i = 0; accept[i] != '\0'; i++)
+        {
+            if (s == accept[i])
+            {
+                return(s);
+            }
+        }
+        printf("%c", *s);
+        s++;
+    }
+    printf("\n");
+    return(s);
+}
+/**
+* Task 5.
+* strstr mandatory
+* Write a function that locates a substring.
+* Prototype: char *_strstr(char *haystack, char *needle);
+* The _strstr() function finds the first occurrence of the
+* substring needle in the string haystack.
+* The terminating null bytes (\0) are not compared
+* Returns a pointer to the beginning of the located substring,
+* or NULL if the substring is not found.
+*/
+char *_strstr(char *haystack, char *needle)
+{
+    for (int i = 0; haystack[i] != '\0'; i++)
+    {
+        for (int j = 0; needle[j] != '\0'; j++)
+        {
+            if (haystack[i] % needle[j] == 0)
+            {
+                printf("needle located!\n");
+                return(needle);
+            }
+            else
+            {
+                return(NULL);
+            }
+        }
+    }
+    return(NULL);
+}
+/**
+* Task 6.
+* Chess is mental torture mandatory
+* Write a function that prints the chessboard.
+* Prototype: void print_chessboard(char (*a)[8]);
+*/
+void print_chessboard(char (*a)[8])
+{
+    int i, j;
+    for (i = 0; i < 8; i++)
+    {
+        for (j = 0; j < 8; j++)
+        {
+            printf("%c", a[i][j]);
+        }
+        printf("\n");
+    }
+}
+/*void print_diagsums(int a, int size)
+{
+    int i, j, p, l = 0, r = 0;
+
+    for (i = 0; i < size; i++)
+    {
+        p = (i * size) + i;
+        l += *(a+p);
+    }
+    for (j = 0; j < size; j++)
+    {
+        p = (j * size) + (size - 1 - j);
+        r += *(a + p);
+    }
+    printf("%i, %i\n", l, r);
+}*/
+/**
+* Task 8.
+* Double pointer, double fun #advanced
+* Write a function that sets the value of a pointer to a char.
+* Prototype: void set_string(char **s, char *to);
+*/
+void set_string(char **s, char *to)
+{
+    *s = to;
+    printf("Pointer value set to '%c'\n", *s);
+}
+
+int main(int argc, char *argv[])
+{
+    char arr[8][8] = {{0, 1, 2, 3, 4, 5, 6, 7},
+                    {7, 1, 2, 3, 4, 5, 6, 0}};
+    char a = 'g', b = 'g';
+    char *s = malloc(sizeof(char));
+    char one = "Blood of the Dragons";
+    char two[] = "Dragon stone";
+    char thr[] = "Dead mans chest";
+    char fou[] = "Dead men tell no tales";
+    char fiv[] = "The curse of the black pearl";
+    char six[] = "Carribbean vine";
+    char sixA[] = "bean vine";
+    char sev[] = "burn them all";
+    char eig[] = "burn";
+    char nin[] = "ragon";
+    char e = 'v', *pt = &e;
+
+
+
+    printf("task 0 answer\n");
+    _memset(s, a, 5);
+
+    printf("\ntask 1 answer\n");
+    //_memcpy(one, two, 6);
+
+    printf("\ntask 2 answer\n");
+    _strchr(thr, b);
+
+    printf("\ntask 3 answer\n");
+    _strspn(fou, fiv);
+
+    printf("\ntask 4 answer\n");
+    _strpbrk(six, sixA);
+
+    printf("\ntask 5 answer\n");
+    _strstr(sev, eig);
+
+    printf("\ntask 6 answer\n");
+    print_chessboard(arr);
+
+    printf("\ntask 7 answer\nUNDONE\n");
+    //print_diagsums(a, 4);
+
+    printf("\ntask 8 answer\n");
+    set_string(pt, b);
+
+}

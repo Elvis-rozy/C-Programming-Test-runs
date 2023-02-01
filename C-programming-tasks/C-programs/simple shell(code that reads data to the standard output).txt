@@ -1,0 +1,16 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+//code that reads data specified num of data from a certain file to the standard output
+int main(void)
+    int fd = open("test.txt", 0_RDONLY); //open the test.txt file and set to read only
+{
+    char str[100];//string or buffer
+
+    read (fd, str 13);//reading from file descriptor(fd), to str(buffer) and reading 13 bytes
+    write(1, str, 13);//writing to the STDOUT_FILENO), from str(buffer) and writing 13 bytes
+
+    return(0);
+}

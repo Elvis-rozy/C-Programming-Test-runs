@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+int divide(int *p, int *n)
+{
+    printf("\n                                                                                          %d/%d = %d remainder %d\n\n", *p, *n, (*p / *n), (*p % *n));
+}
+int multiply(int *p, int *n)
+{
+    printf("\n                                                                                          %d*%d = %d\n\n", *p, *n, (*p * *n));
+}
+int subtract(int *p, int *n)
+{
+    printf("\n                                                                                          %d-%d = %d\n\n", *p, *n, (*p - *n));
+}
+int add(int *p, int *n)
+{
+    printf("\n                                                                                          %d+%d = %df\n\n", *p, *n, (*p + *n));
+}
+int main(int argc, char *argv[])
+{
+    char firstName[20], Surname[20], sign;
+    int firstNum, secondNum, i;
+    //char sign;
+    printf("                                                                                          Hello user,\n");
+    printf("                                                                                          Please input your names\n\n");
+    scanf("%s%s", &firstName, &Surname);
+    printf("                                                                                          Welcome %s %s.\n\n", firstName, Surname);
+    int count = 1;
+    while (count < 2)
+    {
+        printf("                                                                                          Please input the calculus\n");
+        printf("                                                                                          Type '0'[spacebar]'0' to quit\n");
+        scanf("%d%c%d", &firstNum, &sign, &secondNum);
+
+        if (sign == '+')
+        {
+            int (*fptr)(int *, int *) = add(&firstNum, &secondNum);
+        }
+        else if (sign == '-')
+        {
+            int (*fptr)(int *, int *) = subtract(&firstNum, &secondNum);
+        }
+        else if (sign == '*')
+        {
+            int (*fptr)(int *, int *) = multiply(&firstNum, &secondNum);
+        }
+        else if (sign == '/')
+        {
+            int (*fptr)(int *, int *) = divide(&firstNum, &secondNum);
+        }
+        else if (firstNum == 0)
+        {
+            printf("\n                                                                                          Exit protocol Initiated\n");
+            printf("                                                                                          Process terminated\n\n");
+            break;
+        }
+    }
+    return(0);
+}
